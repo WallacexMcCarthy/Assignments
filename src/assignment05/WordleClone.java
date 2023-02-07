@@ -6,7 +6,7 @@
  * Note that students will complete this application as part of
  * assignment #5.
  *
- * @author Peter Jensen and ---your name here---
+ * @author Peter Jensen and ---Wallace Z. McCarthy---
  * @version February 6, 2023
  */
 package assignment05;
