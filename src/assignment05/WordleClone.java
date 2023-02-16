@@ -22,7 +22,7 @@ public class WordleClone
 {
     /**
      * Application entry point
-     *
+     * Where everyhting runs and every thing is called -- essentially the front end part fo this program.
      * @param args unused
      */
     public static void main(String[] args)
@@ -122,6 +122,11 @@ public class WordleClone
      * the function name, parameters, and return type.  This function is static.
      */
 
+    /**
+     * This method picks a random word from the list of words in the .txt tile.
+     * @param filename the name of the file / the file directory
+     * @return return a random word
+     */
     public static String pickRandomWord(String filename) {
         String word = "";
         int count = countWords(filename);
