@@ -32,6 +32,13 @@ public class FractionTester
             System.out.println("Error in toString: expected 3/4, got " + h);
             errorCount++;
         }
+        // Check the second constructor
+        Fraction i = new Fraction(5);
+        if(!i.toString().equals("5/1"))
+        {
+            System.out.println("Error in second constructor: expected 5/1, got " + i);
+            errorCount++;
+        }
 
         // Check the getNumerator method
         if(f.getNumerator() != 1)
@@ -161,6 +168,22 @@ public class FractionTester
         if(!h.toString().equals("3/4"))
         {
             System.out.println("Error in the toString method: expected 3/4, got " + h.toString());
+            errorCount++;
+        }
+        // Check the toDouble method
+        if(f.toDouble() != 0.5)
+        {
+            System.out.println("Error in the toDouble method: expected 0.5, got " + f.toDouble());
+            errorCount++;
+        }
+        if(g.toDouble() != 2.0/3.0)
+        {
+            System.out.println("Error in the toDouble method: expected 2.0/3.0, got " + g.toDouble());
+            errorCount++;
+        }
+        if(h.toDouble() != 0.75)
+        {
+            System.out.println("Error in the toDouble method: expected 0.75, got " + h.toDouble());
             errorCount++;
         }
 
