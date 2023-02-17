@@ -4,7 +4,7 @@
  *
  * @Author Wallace Z. McCarthy
  * @UUID u0838487
- * @Version February 14, 2023
+ * @Version February 16, 2023
  */
 
 package assignment06;
@@ -25,6 +25,10 @@ public class Fraction
     public Fraction(long n, long d)
     {
         long gcd = gcd(n, d);
+        /*
+        If the denominator is negative, then the sign of the fraction is negative, so we must make the numerator
+        negative and the denominator positive.
+         */
         if(d < 0)
         {
             d = -d;
@@ -51,22 +55,37 @@ public class Fraction
      */
     public Fraction add (Fraction rightHandSide)
     {
+        // These variables are the numerator and denominator of the right side of the addition.
         long rightNumerator = rightHandSide.getNumerator();
         long rightDenominator = rightHandSide.getDenominator();
+        // These variables are the numerator and denominator of the new fraction.
         long newNumerator = 0;
         long newDenominator = 0;
+        // If the denominators are the same, then the addition is simple.
         if(denominator == rightDenominator)
         {
             newNumerator = numerator + rightNumerator;
-        }else
+        }
+        // If the denominators are not the same, then we must multiply the denominators and the numerators.
+        else
         {
+            // The new denominator is the product of the two denominators.
             newDenominator = denominator * rightDenominator;
+            // The new numerators are the product of the two denominators, plus the product of the two numerators.
             rightNumerator = denominator * rightNumerator;
             newNumerator = rightDenominator * numerator;
+            // The new numerator is the sum of the two other numerators.
             newNumerator = newNumerator + rightNumerator;
             long gcd = gcd(newNumerator, newDenominator);
+            // Reduce the fraction.
             newNumerator = newNumerator / gcd;
             newDenominator = newDenominator / gcd;
+            // If the denominator is negative, then the sign of the fraction is negative, so we must make the numerator
+            if(newDenominator < 0)
+            {
+                newDenominator = -newDenominator;
+                newNumerator = -newNumerator;
+            }
         }
         return new Fraction(newNumerator, newDenominator);
     }
@@ -78,23 +97,44 @@ public class Fraction
      */
     public Fraction subtract (Fraction rightHandSide)
     {
+        // These variables are the numerator and denominator of the right side of the subtraction.
         long rightNumerator = rightHandSide.getNumerator();
         long rightDenominator = rightHandSide.getDenominator();
+        // These variables are the numerator and denominator of the new fraction.
         long newNumerator = 0;
         long newDenominator = 0;
+        // If the denominators are the same, then the subtraction is simple.
         if(denominator == rightDenominator)
         {
             newNumerator = numerator - rightNumerator;
-        }else
+            // If the numerator is negative, then the sign of the fraction is negative, so we must make the denominator
+            if(newDenominator < 0 && newNumerator < 0)
+            {
+                newDenominator = -newDenominator;
+                newNumerator = -newNumerator;
+            }
+            // If the denominator is negative, then the sign of the fraction is negative, so we must make the numerator
+            if(newDenominator < 0)
+            {
+                newDenominator = -newDenominator;
+                newNumerator = -newNumerator;
+            }
+        }
+        // If the denominators are not the same, then we must multiply the denominators and the numerators.
+        else
         {
+            // The new denominator is the product of the two denominators.
             newDenominator = denominator * rightDenominator;
+            // The new numerators are the product of the two denominators, plus the product of the two numerators.
             rightNumerator = denominator * rightNumerator;
             newNumerator = rightDenominator * numerator;
+            // The new numerator is the difference of the two other numerators.
             newNumerator = newNumerator - rightNumerator;
             long gcd = gcd(newNumerator, newDenominator);
+            // Reduce the fraction.
             newNumerator = newNumerator / gcd;
             newDenominator = newDenominator / gcd;
-            if(newDenominator < 0)
+            if(newDenominator < 0 && newNumerator < 0)
             {
                 newDenominator = -newDenominator;
                 newNumerator = -newNumerator;
