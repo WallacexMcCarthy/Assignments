@@ -24,7 +24,15 @@ public class Fraction
      */
     public Fraction(long n, long d)
     {
-        long gcd = gcd(n, d);
+
+     // This finds the gcd (Greatest Common Divisor) of two long integers.
+        while (d != 0)
+        {
+            long temp = d;
+            d = n % d;
+            n = temp;
+        }
+        long gcd = n;
         /*
         If the denominator is negative, then the sign of the fraction is negative, so we must make the numerator
         negative and the denominator positive.
@@ -76,7 +84,15 @@ public class Fraction
             newNumerator = rightDenominator * numerator;
             // The new numerator is the sum of the two other numerators.
             newNumerator = newNumerator + rightNumerator;
-            long gcd = gcd(newNumerator, newDenominator);
+
+            // This finds the gcd (Greatest Common Divisor) of two long integers.
+            while (newDenominator != 0)
+            {
+                long temp = newDenominator;
+                newDenominator = newNumerator % newDenominator;
+                newNumerator = temp;
+            }
+            long gcd = newNumerator;
             // Reduce the fraction.
             newNumerator = newNumerator / gcd;
             newDenominator = newDenominator / gcd;
@@ -130,7 +146,15 @@ public class Fraction
             newNumerator = rightDenominator * numerator;
             // The new numerator is the difference of the two other numerators.
             newNumerator = newNumerator - rightNumerator;
-            long gcd = gcd(newNumerator, newDenominator);
+            // This finds the gcd (Greatest Common Divisor) of two long integers.
+            while (newDenominator != 0)
+            {
+                long temp = newDenominator;
+                newDenominator = newNumerator % newDenominator;
+                newNumerator = temp;
+            }
+            long gcd = newNumerator;
+
             // Reduce the fraction.
             newNumerator = newNumerator / gcd;
             newDenominator = newDenominator / gcd;
@@ -181,23 +205,6 @@ public class Fraction
     public double toDouble()
     {
         return (double) numerator / denominator;
-    }
-
-    /**
-     * This finds the gcd (Greatest Common Divisor) of two long integers.
-     * @param x number one
-     * @param y number two
-     * @return The greatest common divisor of these two numbers.
-     */
-    public long gcd(long x, long y)
-    {
-        while (y != 0)
-        {
-            long temp = y;
-            y = x % y;
-            x = temp;
-        }
-        return x;
     }
 
     /**
