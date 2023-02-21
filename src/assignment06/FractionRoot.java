@@ -1,7 +1,13 @@
+/**
+ * This class implements the Fraction class and finds the square root of a fraction from a user.
+ * @Author Wallace Z. McCarthy
+ * @UUID u0838487
+ * @Version February 21, 2023
+ */
+
 package assignment06;
 
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class FractionRoot
 {
@@ -23,13 +29,9 @@ public class FractionRoot
         // This will find the X_Zth value according to the provided formula.
         for(int i = 0; i < Z; i++)
         {
-            System.out.println(currentX);
             nextX = S.divide(currentX);
-            System.out.println("nextX: " + nextX);
             nextX = nextX.add(currentX);
-            System.out.println("nextX: " + nextX);
             nextX= nextX.multiply(new Fraction(1, 2));
-            System.out.println("nextX: " + nextX);
             currentX = nextX;
         }
         // This will print the results.

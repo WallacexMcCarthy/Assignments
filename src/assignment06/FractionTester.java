@@ -2,7 +2,7 @@
  * This class tests the Fraction class. Here we are testing calling the Fraction class as well as the methods.
  * @Author Wallace Z. McCarthy
  * @UUID u0838487
- * @Version February 16, 2023
+ * @Version February 21, 2023
  */
 
 package assignment06;
@@ -16,6 +16,7 @@ public class FractionTester
         Fraction f = new Fraction(1, 2);    // A Fraction of value 1/2
         Fraction g = new Fraction(2, 3);    // A Fraction of value 2/3
         Fraction h = new Fraction(3, 4);    // A Fraction of value 3/4
+        Fraction z = new Fraction(5, 2);    // A Fraction of value 5/1
 
         // Check the toString method
         if(!f.toString().equals("1/2"))
@@ -31,6 +32,11 @@ public class FractionTester
         if(!h.toString().equals("3/4"))
         {
             System.out.println("Error in toString: expected 3/4, got " + h);
+            errorCount++;
+        }
+        if(!z.toString().equals("5/2"))
+        {
+            System.out.println("Error in toString: expected 5/2, got " + z);
             errorCount++;
         }
         // Check the second constructor
