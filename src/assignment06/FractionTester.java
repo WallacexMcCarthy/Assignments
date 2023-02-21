@@ -11,6 +11,7 @@ public class FractionTester
 {
     public static void main(String[] args)
     {
+        // Keep track of the number of errors
         int errorCount = 0;
         Fraction f = new Fraction(1, 2);    // A Fraction of value 1/2
         Fraction g = new Fraction(2, 3);    // A Fraction of value 2/3
@@ -187,7 +188,7 @@ public class FractionTester
             errorCount++;
         }
 
-        // Check if there are any errors that have occurred.
+        // Check if there are any errors that have occurred, and print the appropriate message.
         if(errorCount == 0)
         {
             System.out.println("All tests completed, no errors.");
