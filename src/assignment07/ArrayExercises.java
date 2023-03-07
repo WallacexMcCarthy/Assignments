@@ -137,7 +137,12 @@ public class ArrayExercises
      */
     public static void reverseOrder (char[] symbols)
     {
-        return;  // Stub
+        for (int i = 0; i < symbols.length; i++)
+        {
+            char temp = symbols[i];
+            symbols[i] = symbols[symbols.length - 1 - i];
+            symbols[symbols.length - 1 - i] = temp;
+        }
     }
     
     /**
@@ -167,8 +172,14 @@ public class ArrayExercises
     {
     	// Hint -- you may want code like this...
     	// if (target == null)    or maybe   if (value == null), or some combination of code like this
+        int count = 0;
+        for (int i = 0; i < values.length; i++) {
+            if(values[i].equals(target)) {
+                count++;
+            }
+        }
     	
-        return 0; // Stub	
+        return count; // Stub
     }
     
     /**
@@ -210,7 +221,15 @@ public class ArrayExercises
      */
     public static void replace (String[] list, String original, String replacement)
     {
-        return; // Stub
+        try{
+            for (int i = 0; i < list.length; i++) {
+                if(list[i] == original)
+                {
+                    list[i] = replacement;
+                }
+            }
+        }catch (NullPointerException e){
+        }
     }
     
     /**
@@ -252,7 +271,20 @@ public class ArrayExercises
      */
     public static double[] computeAreas (double[] widths, double[] heights)
     {
-        return null; // Stub
+
+        double[] areas = new double[widths.length];
+
+        try{
+            try{
+                for (int i = 0; i < widths.length; i++) {
+                    areas[i] = widths[i] * heights[i];
+                }
+            }catch (ArrayIndexOutOfBoundsException e){
+            }
+        }catch (NullPointerException e){
+
+        }
+        return areas; // Stub
     }
     
     /**
